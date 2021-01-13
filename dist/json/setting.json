@@ -1,0 +1,21 @@
+{
+  "width": 120,
+  "startShift": 30,
+  "endShift": 60,
+  "stacks":[
+    {
+      "keyword": "と",
+      "height": 50
+    },
+    {
+      "keyword": "オ",
+      "image": "./image/oh.svg",
+      "height": 20
+    },
+    {
+      "keyword": "レ",
+      "image": "./image/re.svg",
+      "height": 20
+    }
+  ]
+}

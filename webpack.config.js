@@ -13,7 +13,7 @@ module.exports = [{
   devtool: 'source-map',
   entry: files,
   output: {
-    path: `${__dirname}/dist`,
+    path: `${__dirname}/docs`,
     filename: 'js/[name].js',
   },
   module: {
@@ -75,12 +75,12 @@ module.exports = [{
       patterns: [
         {
           from: `${__dirname}/src/image/*`,
-          to: `${__dirname}/dist`,
+          to: `${__dirname}/docs`,
           context: `${__dirname}/src`,
         },
         {
           from: `${__dirname}/src/json/*.json`,
-          to: `${__dirname}/dist`,
+          to: `${__dirname}/docs`,
           context: `${__dirname}/src`,
         },
       ],
@@ -90,7 +90,7 @@ module.exports = [{
   mode: 'production',
   entry: files,
   output: {
-    path: `${__dirname}/dist`,
+    path: `${__dirname}/docs`,
     filename: 'js/[name].min.js',
   },
   module: {

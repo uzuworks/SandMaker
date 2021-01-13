@@ -1,9 +1,11 @@
 const MiniCssExtract = require("mini-css-extract-plugin");
 const FixStyleOnlyEntries = require("webpack-fix-style-only-entries");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const files = {
-  script: './src/js_src/main.js',
-  style: './src/css_src/main.scss',
+  script: './src/es/main.js',
+  style: './src/scss/main.scss',
 }
 
 module.exports = [{
@@ -11,12 +13,21 @@ module.exports = [{
   devtool: 'source-map',
   entry: files,
   output: {
-    path: `${__dirname}/assets`,
+    path: `${__dirname}/dist`,
     filename: 'js/[name].js',
   },
   module: {
     rules: [{
+      test: /\.pug$/,
+      use: {
+        loader: "pug-loader",
+        options: {
+          pretty: true
+        }
+      },
+    },{
       test: /\.js$/,
+      exclude: [/node_modules/],
       use: [{
         loader: 'babel-loader',
         options: {
@@ -38,8 +49,12 @@ module.exports = [{
           loader: "postcss-loader",
           options: {
             sourceMap: true,
-            config: { path: './' },
-          }
+            postcssOptions:{
+              plugins: [
+                ["autoprefixer", { grid: true }],
+              ],
+            },
+          },
         },
         "sass-loader",
       ]
@@ -50,12 +65,32 @@ module.exports = [{
     new MiniCssExtract({
       filename: "css/[name].css"
     }),
+    new HtmlWebpackPlugin({
+      template: "src/pug/main.pug",
+      filename: "index.html",
+      inject: false,
+      minify: false,
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: `${__dirname}/src/image/*`,
+          to: `${__dirname}/dist`,
+          context: `${__dirname}/src`,
+        },
+        {
+          from: `${__dirname}/src/json/*.json`,
+          to: `${__dirname}/dist`,
+          context: `${__dirname}/src`,
+        },
+      ],
+    }),
   ]
 }, {
   mode: 'production',
   entry: files,
   output: {
-    path: `${__dirname}/assets`,
+    path: `${__dirname}/dist`,
     filename: 'js/[name].min.js',
   },
   module: {
@@ -82,8 +117,12 @@ module.exports = [{
           loader: "postcss-loader",
           options: {
             sourceMap: true,
-            config: { path: './' },
-          }
+            postcssOptions:{
+              plugins: [
+                ["autoprefixer", { grid: true }],
+              ],
+            },
+          },
         },
         "sass-loader",
       ]

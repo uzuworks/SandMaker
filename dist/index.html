@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <section class="sandMaker">
+      <div class="inputContext">
+        <textarea id="sandContext" cols="30" rows="1">オレレオとオレ</textarea>
+        <button id="sandStart">Create!!</button>
+      </div>
+      <div class="resultImage">
+        <canvas id="sandCanvas"></canvas>
+      </div>
+      <ul class="notes">
+        <li>謎のオレオジェネレータです</li>
+        <li>指定文字(「オ」「レ」「と」)以外は無視します</li>
+        <li>突貫で作ったので割と最低ラインですが、動くので改造はご自由に</li>
+        <li>動作確認はchrome(一応babeってある)</li>
+        <li>問い合わせは原則受け付けません</li>
+      </ul>
+    </section>
+  </body>
+</html>

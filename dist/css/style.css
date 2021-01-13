@@ -1,0 +1,17 @@
+.inputContext {
+  border: 1px solid red;
+}
+.inputContext #sandContext {
+  display: block;
+}
+
+.resultImage {
+  border: 1px solid blue;
+  background-color: burlywood;
+}
+
+.notes {
+  border: 1px solid green;
+}
+
+/*# sourceMappingURL=style.css.map*/

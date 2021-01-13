@@ -1,9 +1,5 @@
-# template_webpack_web
+# 謎のサンドジェネレータ
 
-Mostly for personal use template.
-
-- webpack
-- js : babel
-- css : scss + Autoprefixer
-- IE11 supported
-- output just both develop & product
+- 一応設定次第でオレオ以外でも動く
+- 指定文字以外は無視
+- 動作確認はchrome
